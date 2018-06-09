@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="PM_Merger.Views.SelectPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PM_Merger.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="500" Background="White">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="7*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="White" Style="{StaticResource gridShadow}">
+        <Label Content="PM Merger" Style="{StaticResource title_header_label}" HorizontalAlignment="Left" VerticalAlignment="Center" Height="60"  Width="150" FontSize="23" Margin="65,0,0,0"/>
+        <Image HorizontalAlignment="Left" Height="28" Margin="20,0,0,0" Source="/Publics/imgs/pm_logo_mini.png"/>
+        <!--<Button x:Name="exit_btn" Content="" Style="{StaticResource exit_btn}" HorizontalAlignment="Right" Cursor="Hand" VerticalAlignment="Top" Width="20" Height="20" Click="Exit_Application" Margin="0,5,5,0" >
+            <Button.Background>
+                <ImageBrush ImageSource="/Publics/imgs/x-mark.png"/>
+            </Button.Background>
+        </Button>-->
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="7*"/>
+            </Grid.RowDefinitions>
+            <Button x:Name="Options_btn" Grid.Column="1" Grid.Row="0" Style="{StaticResource StandardButton}" Margin="15,15"  Content="Beállítások" Click="Options_btn_Click"/>
+            <Button x:Name="Merge_btn" Grid.Column="0" Grid.Row="0" Style="{StaticResource StandardButton}" Margin="15,15"  Content="Összefűz"/>
+            <ListBox x:Name="Article_Listbox" Style="{StaticResource small_listBox_style}" Margin="15,0,15,15" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" HorizontalContentAlignment="Stretch" SelectionMode="Extended" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                <ListBox.Resources>
+                    <Style TargetType="{x:Type Border}" BasedOn="{StaticResource listCorner}">
+                        <Setter Property="CornerRadius" Value="5,5,0,0"/>
+                    </Style>
+                    <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource listBoxItem_style}"/>
+                </ListBox.Resources>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="0.2" Height="40" Width="425">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="30" />
+                                <ColumnDefinition Width="30" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource Standard_Textblock}" Margin="10,5,0,0" Text="{Binding id}"/>
+                            <TextBlock Grid.Column="1" Grid.Row="0" Style="{StaticResource Standard_Textblock}" Margin="10,5,0,0" Text="{Binding nev}"/>
+                            <!--<TextBlock Grid.Column="2" Grid.Row="0" Style="{StaticResource Standard_Textblock}" Margin="10,5,0,0" Text="{Binding tipus}"/>-->
+                            <CheckBox Grid.Column="3" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+    </Grid>
+</UserControl>
