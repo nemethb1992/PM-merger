@@ -29,13 +29,18 @@ namespace PM_Merger.Views
         {
             InitializeComponent();
             this.grid = grid;
-            Article_Listbox.ItemsSource = s_control.Article_Datasource();
+            Article_Listbox.ItemsSource = s_control.FolderReadOut();
         }
 
         private void Options_btn_Click(object sender, RoutedEventArgs e)
         {
             grid.Children.Clear();
             grid.Children.Add(editPanel = new EditPanel(grid));
+        }
+
+        private void OpenFoldder(object sender, RoutedEventArgs e)
+        {
+
         }
 
         //private void Exit_Application(object sender, RoutedEventArgs e)

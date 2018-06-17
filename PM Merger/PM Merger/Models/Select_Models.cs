@@ -12,7 +12,7 @@ namespace PM_Merger.Models
         {
             public int id { get; set; }
             public string nev { get; set; }
-            public int tipus { get; set; }
+            public string path { get; set; }
         }
     }
 }

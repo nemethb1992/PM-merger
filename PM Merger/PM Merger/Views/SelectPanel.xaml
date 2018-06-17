@@ -11,14 +11,14 @@
             <RowDefinition Height="60"/>
             <RowDefinition Height="7*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Background="White" Style="{StaticResource gridShadow}">
-        <Label Content="PM Merger" Style="{StaticResource title_header_label}" HorizontalAlignment="Left" VerticalAlignment="Center" Height="60"  Width="150" FontSize="23" Margin="65,0,0,0"/>
+        <Grid Grid.Row="0" Background="White" Style="{StaticResource Standard_Grid_Shadow}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="PM Merger" Style="{StaticResource Big_TextBlock}" HorizontalAlignment="Left" VerticalAlignment="Center"  FontSize="24" Margin="65,0,0,0"/>
         <Image HorizontalAlignment="Left" Height="28" Margin="20,0,0,0" Source="/Publics/imgs/pm_logo_mini.png"/>
-        <!--<Button x:Name="exit_btn" Content="" Style="{StaticResource exit_btn}" HorizontalAlignment="Right" Cursor="Hand" VerticalAlignment="Top" Width="20" Height="20" Click="Exit_Application" Margin="0,5,5,0" >
-            <Button.Background>
-                <ImageBrush ImageSource="/Publics/imgs/x-mark.png"/>
-            </Button.Background>
-        </Button>-->
+
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -29,14 +29,20 @@
                 <RowDefinition Height="70"/>
                 <RowDefinition Height="7*"/>
             </Grid.RowDefinitions>
-            <Button x:Name="Options_btn" Grid.Column="1" Grid.Row="0" Style="{StaticResource StandardButton}" Margin="15,15"  Content="Beállítások" Click="Options_btn_Click"/>
-            <Button x:Name="Merge_btn" Grid.Column="0" Grid.Row="0" Style="{StaticResource StandardButton}" Margin="15,15"  Content="Összefűz"/>
-            <ListBox x:Name="Article_Listbox" Style="{StaticResource small_listBox_style}" Margin="15,0,15,15" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" HorizontalContentAlignment="Stretch" SelectionMode="Extended" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+            <Button x:Name="Options_btn" Grid.Column="0" Grid.Row="0" Style="{StaticResource StandardButton}" Margin="20,15" Click="Options_btn_Click_1">
+                <Image Source="/PM Merger;component/Publics/imgs/folder.png" Height="30" />
+            </Button>
+            <Button x:Name="Merge_btn" Grid.Column="1" Grid.Row="0" Style="{StaticResource StandardButton}" Margin="20,15"  Content="Merge"/>
+            <ListBox x:Name="Article_Listbox" Style="{StaticResource Standard_ListBox}" Margin="15,0,15,15" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" HorizontalContentAlignment="Stretch" SelectionMode="Extended" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden">
                 <ListBox.Resources>
-                    <Style TargetType="{x:Type Border}" BasedOn="{StaticResource listCorner}">
+                    <Style TargetType="{x:Type Border}" BasedOn="{StaticResource Border_Corner_Element}">
                         <Setter Property="CornerRadius" Value="5,5,0,0"/>
                     </Style>
-                    <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource listBoxItem_style}"/>
+                    <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource Standard_ListBoxItem}">
+
+                        <Setter Property="Padding" Value="0"/>
+                        <Setter Property="Margin" Value="5,5"/>
+                    </Style>
                 </ListBox.Resources>
                 <ListBox.ItemTemplate>
                     <DataTemplate>

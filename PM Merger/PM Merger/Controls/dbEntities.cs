@@ -38,26 +38,5 @@ namespace PM_Merger.Controls
             connSqlite.Close();
             return data;
         }
-        public List<Article_Struct> Article_SelectAll_Sqlite(string query)
-        {
-            List<Article_Struct> list = new List<Article_Struct>();
-            SQLiteConnection connSqlite = new SQLiteConnection(innerDataSourceURL);
-            connSqlite.Open();
-            var command = connSqlite.CreateCommand();
-            command.CommandText = query;
-            SQLiteDataReader sdr = command.ExecuteReader();
-            while (sdr.Read())
-            {
-                list.Add(new Article_Struct
-                {
-                    id = Convert.ToInt32(sdr["id"]),
-                    nev = sdr["nev"].ToString(),
-                    tipus = Convert.ToInt32(sdr["tipus"]),
-                });
-            }
-            sdr.Close();
-            connSqlite.Close();
-            return list;
-        }
     }
 }

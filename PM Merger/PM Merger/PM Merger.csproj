@@ -111,12 +111,17 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Resource Include="Publics\fonts\Cinzel-Regular.ttf" />
+    <Resource Include="Publics\fonts\Montserrat-Regular.ttf" />
+    <Resource Include="Publics\fonts\PoiretOne-Regular.ttf" />
+    <Resource Include="Publics\fonts\Raleway-Medium.ttf" />
+    <Resource Include="Publics\fonts\Raleway-Regular.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Publics\fonts\" />
+    <Resource Include="Publics\imgs\folder.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Publics\imgs\bin.png" />
