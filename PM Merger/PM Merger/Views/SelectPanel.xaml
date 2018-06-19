@@ -14,10 +14,13 @@
         <Grid Grid.Row="0" Background="White" Style="{StaticResource Standard_Grid_Shadow}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="80"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Text="PM Merger" Style="{StaticResource Big_TextBlock}" HorizontalAlignment="Left" VerticalAlignment="Center"  FontSize="24" Margin="65,0,0,0"/>
-        <Image HorizontalAlignment="Left" Height="28" Margin="20,0,0,0" Source="/Publics/imgs/pm_logo_mini.png"/>
+            <TextBlock Text="PM Merger" Style="{StaticResource Big_TextBlock}" HorizontalAlignment="Left" VerticalAlignment="Center"  FontSize="25" Margin="65,4,0,0"/>
+            <Button Grid.Column="1" Style="{StaticResource WhiteButton}" Click="OpenFoldder">
+                <Image Source="/PM Merger;component/Publics/imgs/server.png" Height="30"/>
+            </Button>
+            <Image HorizontalAlignment="Left" Height="28" Margin="20,0,0,0" Source="/Publics/imgs/pm_logo_mini.png"/>
 
         </Grid>
         <Grid Grid.Row="1">
@@ -26,14 +29,25 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="70"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="50"/>
                 <RowDefinition Height="7*"/>
             </Grid.RowDefinitions>
-            <Button x:Name="Options_btn" Grid.Column="0" Grid.Row="0" Style="{StaticResource StandardButton}" Margin="20,15" Click="OpenFoldder">
+            <Button x:Name="Options_btn" Grid.Column="0" Grid.Row="0" Style="{StaticResource StandardButton}" Margin="20,20,10,10" Click="OpenInExplorer">
                 <Image Source="/PM Merger;component/Publics/imgs/folder.png" Height="30" />
             </Button>
-            <Button x:Name="Merge_btn" Grid.Column="1" Grid.Row="0" Style="{StaticResource StandardButton}" Margin="20,15"  Content="Merge"/>
-            <ListBox x:Name="Article_Listbox" Style="{StaticResource Standard_ListBox}" Margin="15,0,15,15" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" HorizontalContentAlignment="Stretch" SelectionMode="Extended" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden">
+            <Button x:Name="Merge_btn" Grid.Column="1" Grid.Row="0" Style="{StaticResource StandardButton}" Margin="10,20,20,10" Click="Merge_btn_Click">
+                <Image Source="/PM Merger;component/Publics/imgs/merge.png" Height="30" />
+            </Button>
+            <TextBox x:Name="Printed_Name_tbx" Tag="placeholder" Grid.Row="1" Panel.ZIndex="1" Grid.ColumnSpan="2" Style="{StaticResource Standard_Textbox}" Background="Transparent" Margin="20,0,20,5" FontSize="19" Padding="12,12,0,0" Text="" GotFocus="TextBox_PlaceHolder_GotFocus" LostFocus="TextBox_PlaceHolder_LostFocus">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}" BasedOn="{StaticResource Border_Corner_Element}">
+                        <Setter Property="CornerRadius" Value="3"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+            <TextBlock x:Name="placeholder" Grid.Row="1" Grid.ColumnSpan="2" Panel.ZIndex="0" Style="{StaticResource Standard_Textblock}" Margin="20,0,20,5" FontSize="19" Padding="12" Foreground="#FFBFBFBF" Text="Új fájl neve"/>
+            <ListBox x:Name="Article_Listbox" Style="{StaticResource Standard_ListBox}" Margin="18,0,18,15" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" HorizontalContentAlignment="Stretch" SelectionMode="Extended" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden">
                 <ListBox.Resources>
                     <Style TargetType="{x:Type Border}" BasedOn="{StaticResource Border_Corner_Element}">
                         <Setter Property="CornerRadius" Value="5,5,0,0"/>
@@ -41,23 +55,25 @@
                     <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource Standard_ListBoxItem}">
 
                         <Setter Property="Padding" Value="0"/>
-                        <Setter Property="Margin" Value="5,5"/>
+                        <Setter Property="Margin" Value="0,5"/>
                     </Style>
                 </ListBox.Resources>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Grid Margin="0.2" Height="40" Width="425">
+                        <Grid Margin="0.2" Height="45" Width="425">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="30" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="30" />
                                 <ColumnDefinition Width="30" />
                             </Grid.ColumnDefinitions>
-
-                            <TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource Standard_Textblock}" Margin="10,5,0,0" Text="{Binding id}"/>
-                            <TextBlock Grid.Column="1" Grid.Row="0" Style="{StaticResource Standard_Textblock}" Margin="10,5,0,0" Text="{Binding nev}"/>
+                            <Grid.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="Megnyitás" Click="MenuItem_Click"/>
+                                </ContextMenu>
+                            </Grid.ContextMenu>
+                            <TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource Standard_Textblock}" VerticalAlignment="Center" Padding="10,0" Text="{Binding nev}"/>
                             <!--<TextBlock Grid.Column="2" Grid.Row="0" Style="{StaticResource Standard_Textblock}" Margin="10,5,0,0" Text="{Binding tipus}"/>-->
-                            <CheckBox Grid.Column="3" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <CheckBox x:Name="list_checkbox" Grid.Column="2" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" IsChecked="{Binding Checked}"/>
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
