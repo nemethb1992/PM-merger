@@ -105,22 +105,9 @@ namespace PM_Merger.Controls
                         documentPageCounter++;
                         PdfImportedPage importedPage = copy.GetImportedPage(reader, currentPageIndex);
                         PdfCopy.PageStamp pageStamp = copy.CreatePageStamp(importedPage);
-
-                        //// Write header
-                        //ColumnText.ShowTextAligned(pageStamp.GetOverContent(), Element.ALIGN_CENTER,
-                        //    new Phrase("PDF Merger by Helvetic Solutions"), importedPage.Width / 2, importedPage.Height - 30,
-                        //    importedPage.Width < importedPage.Height ? 0 : 1);
-
-                        //// Write footer
-                        //ColumnText.ShowTextAligned(pageStamp.GetOverContent(), Element.ALIGN_CENTER,
-                        //    new Phrase(String.Format("Page {0}", documentPageCounter)), importedPage.Width / 2, 30,
-                        //    importedPage.Width < importedPage.Height ? 0 : 1);
-
                         pageStamp.AlterContents();
-
                         copy.AddPage(importedPage);
                     }
-
                     copy.FreeReader(reader);
                         reader.Close();
                     }
@@ -132,7 +119,7 @@ namespace PM_Merger.Controls
                 }
                 DateTime thisDay = DateTime.Today;
                 System.IO.Directory.CreateDirectory(FolderUrl+"\\Merged Documents");
-                System.IO.File.WriteAllBytes(FolderUrl+ "\\Merged Documents\\" + PrintedName +" ("+ thisDay.ToString("yyyy.MM.dd") + ").pdf", ms.GetBuffer());
+                System.IO.File.WriteAllBytes(FolderUrl+ "\\Merged Documents\\" + PrintedName +" ( "+ thisDay.ToString("yyyy. MM. dd.") + " ).pdf", ms.GetBuffer());
                 Process.Start(FolderUrl + "\\Merged Documents");
 
                 return ms.GetBuffer();
