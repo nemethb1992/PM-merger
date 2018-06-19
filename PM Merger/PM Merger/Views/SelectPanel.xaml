@@ -29,7 +29,7 @@
                 <RowDefinition Height="70"/>
                 <RowDefinition Height="7*"/>
             </Grid.RowDefinitions>
-            <Button x:Name="Options_btn" Grid.Column="0" Grid.Row="0" Style="{StaticResource StandardButton}" Margin="20,15" Click="Options_btn_Click_1">
+            <Button x:Name="Options_btn" Grid.Column="0" Grid.Row="0" Style="{StaticResource StandardButton}" Margin="20,15" Click="OpenFoldder">
                 <Image Source="/PM Merger;component/Publics/imgs/folder.png" Height="30" />
             </Button>
             <Button x:Name="Merge_btn" Grid.Column="1" Grid.Row="0" Style="{StaticResource StandardButton}" Margin="20,15"  Content="Merge"/>

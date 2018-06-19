@@ -40,12 +40,8 @@ namespace PM_Merger.Views
 
         private void OpenFoldder(object sender, RoutedEventArgs e)
         {
-
+            s_control.OpenFolderDialog_URL();
+            Article_Listbox.ItemsSource = s_control.FolderReadOut();
         }
-
-        //private void Exit_Application(object sender, RoutedEventArgs e)
-        //{
-        //    Environment.Exit(0);
-        //}
     }
 }
