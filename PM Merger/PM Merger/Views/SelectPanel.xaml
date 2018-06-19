@@ -60,7 +60,7 @@
                 </ListBox.Resources>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Grid Margin="0.2" Height="45" Width="425">
+                        <Grid Margin="0.2" Background="Transparent" Panel.ZIndex="3" Height="45" Width="425" MouseDown="Grid_MouseDown">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="30" />

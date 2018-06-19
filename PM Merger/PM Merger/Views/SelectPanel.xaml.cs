@@ -61,6 +61,7 @@ namespace PM_Merger.Views
             {
                 s_control.PDF_Merger(Urls, Printed_Name_tbx.Text);
                 Printed_Name_tbx.Text = "";
+                placeholder.Visibility = Visibility.Visible;
             }
             catch (Exception)
             {
@@ -104,6 +105,21 @@ namespace PM_Merger.Views
             MenuItem mi = sender as MenuItem;
             Article_Struct item = mi.DataContext as Article_Struct;
             s_control.OpenPDF(item.path);
+        }
+
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Grid grid = sender as Grid;
+            Article_Struct item = grid.DataContext as Article_Struct;
+            if (item.Checked == false)
+            {
+                item.Checked = true;
+            }
+            else
+            {
+                item.Checked = false;
+            }
+            Article_Listbox.Items.Refresh();
         }
     }
 }
